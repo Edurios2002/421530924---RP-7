@@ -48,6 +48,8 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 
+Texture dado10Caras; //Nueva textura para el dado de 10 caras
+
 Model Kitt_M;
 Model Llanta_M;
 Model Blackhawk_M;
@@ -57,6 +59,8 @@ Model Coche;
 Model cofre;
 Model llantas;
 Model lampara;
+
+
 
 
 Skybox skybox;
@@ -163,6 +167,8 @@ void CreateObjects()
 
 
 	};
+
+
 	
 	Mesh *obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
@@ -194,6 +200,116 @@ void CreateShaders()
 	shaderList.push_back(*shader1);
 }
 
+void CrearDado10C()
+{
+
+	unsigned int cubo_indices_10[] = {
+		// CARA SUPERIOR 01
+		0, 1, 2,
+
+		// CARA SUPERIOR 02
+		3 ,4, 5,
+
+		// CARA SUPERIOR 03
+		6, 7, 8,
+
+		// CARA SUPERIOR 04
+		9, 10, 11,
+
+		// CARA SUPERIOR 05
+		12, 13, 14,
+
+		// "ABAJO"
+
+		//CARA INFERIOR 01
+		15, 16, 17,
+
+		//CARA INFERIOR 02
+		18, 19 ,20,
+
+		//CARA INFERIOR 03
+		21, 22, 23,
+
+		//CARA INFERIOR 04
+		24, 25, 26,
+
+		//CARA INFERIOR 05
+		27, 28, 29,
+
+	};
+
+	GLfloat cubo_vertices_10[] = {
+
+		//--------------CARAS SUPERIORES------------
+
+		//CARA SUPERIOR 1
+		//x		y		z		S		T			NX		NY		NZ
+		-0.3f, 0.0f,  0.5f,		0.495f,	0.935f,		0.3f, 0.0f,  0.5f,
+		0.3f, 0.0f,  0.5f,	   0.28f,  0.87f,		0.3f, 0.0f,  0.5f,
+		0.0f,  0.45f,  1.0f,	0.48f,	0.72f,		0.0f,  0.45f,  1.0f,
+
+		//CARA SUPERIOR 2
+		//x		y		z		S		T			NX		NY		NZ
+		0.3f, 0.0f,  0.5f,		0.638f,  0.347f,	0.3f, 0.0f,  0.5f,
+		0.45f, 0.6f,  0.5f,		0.49f,	0.478f,		0.45f, 0.6f,  0.5f,
+		0.0f,  0.45f,  1.0f,	0.383f,	0.284f,		0.0f,  0.45f,  1.0f,
+
+		//CARA SUPERIOR 3
+		//x		y		z		S		T			NX		NY		NZ
+		0.45f, 0.6f,  0.5f,		0.371f,	0.533f,		0.45f, 0.6f,  0.5f,
+		0.0f, 0.95f,  0.5f,		0.602f,  0.528f,	0.0f, 0.95f,  0.5f,
+		0.0f,  0.45f,  1.0f,	0.478f,	0.729f,		0.0f,  0.45f,  1.0f,
+
+		//CARA SUPERIOR 4
+		//x		y		z		S		T			NX		NY		NZ
+		0.0f, 0.95f,  0.5f,		0.417f,  0.074f,	0.0f, 0.95f,  0.5f,
+		-0.45f, 0.6f,  0.5f,	0.607f,	0.168f,		0.45f, 0.6f,  0.5f,
+		0.0f,  0.45f,  1.0f,	0.383f,	0.284f,		0.0f,  0.45f,  1.0f,
+
+		//CARA SUPERIOR 5
+		//x		y		z		S		T			NX		NY		NZ
+		-0.45f, 0.6f,  0.5f,	0.741f,	0.675f,		0.45f, 0.6f,  0.5f,
+		-0.3f, 0.0f,  0.5f,		0.695f,  0.852f,	0.3f, 0.0f,  0.5f,
+		0.0f,  0.45f,  1.0f,	0.478f,	0.725f,		0.0f,  0.45f,  1.0f,
+
+		//------------------CARAS INFERIORES----------------------
+
+		//CARA INFERIOR 1
+		//x		y		z		S		T			NX		NY		NZ
+		-0.3f, 0.0f,  0.5f,		0.609f,	0.170f,		-0.3f, 0.0f,  0.5f,
+		0.3f, 0.0f,  0.5f,		0.639f,  0.345f,	0.3f, 0.0f,  0.5f,
+		0.0f,  0.45f,  0.0f,	0.388f,	0.284f,		0.0f,  0.45f,  0.0f,
+
+		//CARA INFERIOR 2
+		//x		y		z		S		T			NX		NY		NZ
+		0.3f, 0.0f,  0.5f,		0.484f,  0.479f,	0.3f, 0.0f,  0.5f,
+		0.45f, 0.6f,  0.5f,		0.263f,	0.473f,		0.45f, 0.6f,  0.5f,
+		0.0f,  0.45f,  0.0f,	0.383f,	0.291f,		0.0f,  0.45f,  0.0f,
+
+		//CARA INFERIOR 3
+		//x		y		z		S		T			NX		NY		NZ
+		0.45f, 0.6f,  0.5f,		0.695f,	0.853f,		0.45f, 0.6f,  0.5f,
+		0.0f, 0.95f,  0.5f,		0.497f,  0.938f,	0.0f, 0.95f,  0.5f,
+		0.0f,  0.45f,  0.0f,	0.479f,	0.726f,		0.0f,  0.45f,  0.0f,
+
+		//CARA INFERIOR 4
+		//x		y		z		S		T			NX		NY		NZ
+		0.0f, 0.95f,  0.5f,		0.201f,  0.127f,	0.0f, 0.95f,  0.5f,
+		-0.45f, 0.6f,  0.5f,	0.417f,	0.074f,		-0.45f, 0.6f,  0.5f,
+		0.0f,  0.45f,  0.0f,	0.382f,	0.284f,		0.0f,  0.45f,  0.0f,
+
+		//CARA INFERIOR 5
+		//x		y		z		S		T			NX		NY		NZ
+		-0.45f, 0.6f,  0.5f,	0.6f,	0.535f,		-0.45f, 0.6f,  0.5f,
+		-0.3f, 0.0f,  0.5f,		0.74f,  0.676f,		-0.3f, 0.0f,  0.5f,
+		0.0f,  0.45f,  0.0f,	0.48f,	0.725f,		0.0f,  0.45f,  0.0f,
+	};
+
+	Mesh* dado10 = new Mesh();
+	dado10->CreateMesh(cubo_vertices_10, cubo_indices_10, 250, 50); //192,36
+	meshList.push_back(dado10);
+}
+
 
 
 int main()
@@ -203,6 +319,7 @@ int main()
 
 	CreateObjects();
 	CreateShaders();
+	CrearDado10C();
 
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
 
@@ -238,6 +355,10 @@ int main()
 	//-----lampara-----
 	lampara = Model();
 	lampara.LoadModel("Models/lampara.obj");
+
+
+	dado10Caras = Texture("Textures/dado10caras.png");
+	dado10Caras.LoadTextureA();
 	
 
 	std::vector<std::string> skyboxFaces;
@@ -261,13 +382,21 @@ int main()
 	//contador de luces puntuales
 
 	//-------Luz Puntual----------\
+	
 
+	
 	unsigned int pointLightCount = 0;
 	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
 		0.0f, 15.0f,
 		12.2f, 7.5f, 8.5f,
 		0.3f, 0.2f, 0.1f);
 	pointLightCount++;
+	
+	//---------------------------------------
+
+
+
+
 
 	//luz puntual color blanca de la lampara
 
@@ -276,7 +405,7 @@ int main()
 
 	//---------spotlight----------
 	//asignacion de cuantas luces
-	unsigned int spotLightCount = 3;
+	unsigned int spotLightCount = 4;
 	//1 luz
 	//linterna
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
@@ -302,6 +431,14 @@ int main()
 	spotLights[3] = SpotLight(1.0f, 1.0f, 0.0f,
 		1.0f, 2.0f,
 		5.0f, 10.0f, 0.0f,
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.01f, 0.001f,
+		15.0f);
+
+	// Luz roja
+	spotLights[2] = SpotLight(1.0f, 0.0f, 0.0f,
+		15.0f, 10.0f,
+		15.0f, 10.0f, 25.0f,
 		0.0f, -5.0f, 0.0f,
 		1.0f, 0.01f, 0.001f,
 		15.0f);
@@ -334,7 +471,7 @@ int main()
 		uniformView = shaderList[0].GetViewLocation();
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
-		
+
 		//información en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
@@ -345,14 +482,30 @@ int main()
 
 		// luz ligada a la cámara de tipo flash
 		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
-			glm::vec3 lowerLight = camera.getCameraPosition();
+		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
+		//
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
-		shaderList[0].SetPointLights(pointLights, pointLightCount);
-		shaderList[0].SetSpotLights(spotLights, spotLightCount);
+
+		//---------Luz encendida y apagada de la lampara-----------------
+
+		//ciclo if para que se pueda apagar la luz de la lampara
+		//lo que se tiene que hacer crear una encendida y una apagada
+
+		if (mainWindow.getvalor() == true)
+		{
+			shaderList[0].SetPointLights(pointLights, pointLightCount);//luz encendida
+		}
+		else
+		{
+			shaderList[0].SetPointLights(pointLights, pointLightCount - 1);		//-1 es para apagar la luz 
+		}
+		//---------------finalizacion de la luz encendida y apagada de la lampara------------------------------
+
+		shaderList[0].SetSpotLights(spotLights, spotLightCount-1);
 
 
 
@@ -372,7 +525,7 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-	
+
 		//coche texturizado
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f + mainWindow.getmuevex(), -0.95f, 20.0f));
@@ -434,15 +587,16 @@ int main()
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		llantas.RenderModel();
-	
+
 		//--lampara--
-		
+
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(12.0f , -0.95f, -3.0f));
+		model = glm::translate(model, glm::vec3(12.0f, -0.95f, -3.0f));
 		model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		lampara.RenderModel();
+
 
 
 
@@ -458,12 +612,23 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Blackhawk_M.RenderModel();
 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(25.0f, 5.0f, 7.0f)); //4.5,9.5,-2.0
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f)); //inclinaci n
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		dado10Caras.UseTexture();
+		meshList[4]->RenderMesh();
+
+
+
 		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -4.0f));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		
+
+
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

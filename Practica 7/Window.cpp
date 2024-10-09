@@ -15,6 +15,9 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	height = windowHeight;
 	mueve_helicoptero = 2.0f;
 	muevex = 2.0f;
+	valor = true;
+	valor1 = true;
+
 	for (size_t i = 0; i < 1024; i++)
 	{
 		keys[i] = 0;
@@ -37,14 +40,14 @@ int Window::Initialise()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	//CREAR VENTANA
-	mainWindow = glfwCreateWindow(width, height, "Practica 7 : iluminacion 1 - 421530924 ", NULL, NULL);
+	mainWindow = glfwCreateWindow(width, height, "reporte 8 : iluminacion 1 - 421530924 ", NULL, NULL);
 
 	if (!mainWindow)
 	{
 		printf("Fallo en crearse la ventana con GLFW");
 		glfwTerminate();
 		return 1;
-	}
+	}  ///
 	//Obtener tamaño de Buffer
 	glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
 
@@ -105,6 +108,7 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
+	//movimiento del helicoptero
 	if (key == GLFW_KEY_O)
 	{
 		theWindow-> mueve_helicoptero += 1.0;
@@ -113,14 +117,65 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		theWindow-> mueve_helicoptero -= 1.0;
 	}
+
+	//movimiento del carro
 	if (key == GLFW_KEY_Y)
 	{
-		theWindow->muevex += 1.0;
+		theWindow->muevex += 10.0;
 	}
 	if (key == GLFW_KEY_U)
 	{
-		theWindow->muevex -= 1.0;
+
+		theWindow->muevex -= 10.0;
+
 	}
+
+
+
+	//lampara
+	if (key == GLFW_KEY_1)
+	{
+		theWindow->valor = true;
+
+	}
+	if (key == GLFW_KEY_2)
+	{
+		theWindow->valor = false;
+	}
+
+	//fogata
+	if (key == GLFW_KEY_3)
+	{
+		theWindow->valor1 = true;
+
+	}
+	if (key == GLFW_KEY_4)
+	{
+		theWindow->valor1 = false;
+	}
+
+	// CAPO ARRIBA (Abrir)
+	if (key == GLFW_KEY_9 && action == GLFW_PRESS)
+	{
+		// Verificar que el capó no se abra más de 45 grados
+		if (theWindow->articulacion_capo > -45.0f) // Invertir la dirección
+		{
+			theWindow->articulacion_capo -= 10.0f; // Decrementar el ángulo para abrir hacia arriba
+		}
+	}
+
+	// CAPO ABAJO (Cerrar)
+	if (key == GLFW_KEY_0 && action == GLFW_PRESS)
+	{
+		// Verificar que el capó no baje más allá de 0 grados (completamente cerrado)
+		if (theWindow->articulacion_capo < 0.0f) // Cambiar dirección del cierre
+		{
+			theWindow->articulacion_capo += 10.0f; // Incrementar el ángulo para cerrar hacia abajo
+		}
+	}
+
+
+
 
 
 

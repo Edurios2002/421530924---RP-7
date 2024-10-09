@@ -104,7 +104,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="RP7 - 421530924.cpp">
+    <ClCompile Include="EJ8 - 421530924 .cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

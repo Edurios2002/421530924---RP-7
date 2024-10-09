@@ -15,8 +15,9 @@ public:
 	GLfloat getYChange();
 	GLfloat getmueve_helicoptero() { return mueve_helicoptero; }
 	GLfloat getmuevex() { return muevex; }
-
-
+	GLfloat getvalor() { return valor; }
+	GLfloat getvalor1() { return valor1; }
+	GLfloat getarticulacion_capo() { return articulacion_capo; }
 
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
@@ -36,8 +37,18 @@ private:
 	GLfloat yChange;
 	GLfloat mueve_helicoptero;
 	GLfloat muevex;
+	GLfloat valor;
+	GLfloat valor1;
 
-	bool mouseFirstMoved;
+	GLint K = 0;
+	GLint luz_del = 1;
+	GLint luz_tras = 0;
+	GLfloat anguK = 0.0f;
+	GLfloat avanza_retrocede, articulacion_avanza, articulacion_capo, articulacion_reversa;
+
+
+
+	bool mouseFirstMoved,Enciende;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);
 
